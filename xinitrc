@@ -4,6 +4,7 @@
 xwallpaper --zoom ~/wall.png
 setxkbmap -option altwin:swap_alt_win
 picom &
+gdrive pull &
 
 # -- Start window manager
 exec dwm
