@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while read file; do
+	echo "file: $file"
+	case "$1" in
+		"C-d")
+			rm -rf "$file" ;;
+	esac
+done
