@@ -1,0 +1,11 @@
+# There is a common bug related to glib since 2012.
+# When set Terminal=true, the Exec command will use
+# xterm terminal emulator and not your preferred terminal.
+# https://github.com/mate-desktop/mate-panel/issues/57
+
+[Desktop Entry]
+Name=Vifm
+#Exec=vifm %u
+Exec=st -e vifm %u
+#Terminal=true
+Type=Application
