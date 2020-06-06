@@ -4,7 +4,7 @@ set syscalls
 set nofollowlinks
 set sortnumbers
 set undolevels=100
-colorscheme dracula.vifm
+colorscheme ks1c.vifm
 set timefmt=%m/%d\ %H:%M
 set wildmenu
 set wildstyle=popup
@@ -16,9 +16,11 @@ set incsearch
 set scrolloff=4
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 set confirm-=delete
+set nu rnu
 
 " ------------------------------------------------------------------------------
 command! df df -h %m 2> /dev/null
+command! du du -hs %c %m 2> /dev/null
 command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
@@ -29,12 +31,13 @@ command! reload :write | restart
 command! ft :echo filetype( '.' )
 
 " ------------------------------------------------------------------------------
+nnoremap <c-c> :!echo "file://$(pwd)/"%c | xclip -i -selection clipboard -t text/uri-list<cr>
+nnoremap . za
+nnoremap <Space> <C-w>x<TAB>
 nnoremap s :!$SHELL<cr>
 nnoremap S :sort<cr>
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
-nnoremap o :!gvim --remote-tab-silent %f<cr>
-nnoremap O :!gvim %f<cr>
 nnoremap gb :file &<cr>l
 nnoremap yd :!echo %d | xclip %i<cr>
 nnoremap yf :!echo %c:p | xclip %i<cr>
@@ -44,7 +47,6 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 nnoremap ,t :!xterm &<cr>
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
-nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 nnoremap ,w :set wrap!<cr>
 nnoremap <f1> :!setwallpaper %f &<cr>
 nnoremap <f2> :!sendtopi %f<cr>
@@ -72,12 +74,14 @@ set classify+='  ::*.png,,*.jpeg,,*.jpg,,*.bmp,,*.ico::'
 set classify+='  ::*.iso::'
 set classify+='  ::*.txt,,*.srt::'
 set classify+='  ::*.mp4,,*.avi,,*.mkv::'
-set classify+='  ::*.mp3::'
+set classify+='  ::*.mp3,,*.ogg::'
 set classify+='  ::*.sh::'
 set classify+='  ::*.cpp,,*.h,,*.hpp,,*.java,,*.py::'
 set classify+='  ::*.pdf::'
 set classify+='  ::*.zip,,*.rar,,*.7z,,*.7zip::'
-set classify+='  ::*.cxi,,*.3ds,,*.smc::'
+set classify+='  ::*.cxi,,*.3ds,,*.cia,,*.smc::'
+set classify+='  ::*.doc,,*.docx,,*.odt::'
+set classify+='  ::*.xlx,,*.xlsx::'
 
 " ------------------------------------------------------------------------------
 fileview */ lsd %c --icon=always --icon-theme=unicode --group-dirs=first
@@ -92,6 +96,9 @@ fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif ~/scripts/vifmimg.sh draw %px %p
 filextype *.MOV,*.mpg,*.flv,*.wmv,*.mp4,*.avi,*.mkv mpv %f 2>/dev/null &
 fileviewer *.MOV,*.mpg,*.flv,*.wmv,*.mp4,*.avi,*.mkv ~/scripts/vifmimg.sh videopreview %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
 
+" Audio
+filextype *.mp3,*.ogg mpv %f 2>/dev/null
+
 " Archives
 fileviewer *.jar,*.rar,*.zip,*.7z,*.zip,*.gz,*.tar bsdtar -tf %c | cut -c -80
 filextype *.zip,*.jar,*.gz,*.tar FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR
@@ -100,3 +107,6 @@ filextype *.rar FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR
 " Pdf
 filextype *.pdf mupdf %f &
 fileviewer *.pdf ~/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
+
+" Libre Office
+filextype *.odt,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
