@@ -7,8 +7,5 @@ export EDITOR=nvim
 export _JAVA_AWT_WM_NONREPARENTING=1
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME=$HOME/.android/Sdk
-export XDG_DESKTOP_DIR=$HOME
-export XDG_DOWNLOAD_DIR=$HOME/downloads
 
-[ "$(tty)" = "/dev/tty1" ] && exec startx $HOME/dotfiles/xinitrc
-
+[ "$(tty)" = "/dev/tty1" ] && exec startx $HOME/dotfiles/.xinitrc
