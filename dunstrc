@@ -1,0 +1,82 @@
+[global]
+    monitor = 0
+    follow = keyboard
+    geometry = "300x5-13+31"
+    indicate_hidden = yes
+    shrink = yes
+    transparency = 0
+    notification_height = 0
+    separator_height = 5
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 5
+    frame_color = "#bd93f9"
+    separator_color = frame
+    sort = yes
+    idle_threshold = 120
+    font = Monospace 10
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = center
+    show_age_threshold = 60
+    word_wrap = no
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = true
+    show_indicators = yes
+    icon_position = left
+    max_icon_size = 64
+    sticky_history = yes
+    history_length = 20
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    startup_notification = false
+    force_xinerama = false
+
+[experimental]
+    per_monitor_dpi = false
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+slash
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#000000"
+    foreground = "#ffffff"
+    timeout = 5
+
+[urgency_normal]
+    background = "#21222c"
+    foreground = "#f8f8f2"
+    timeout = 5
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
+
+# [rule]                    Rule name, for identification. Can be any name.
+# appname = "*"             Match msg with this appname. Can combine multiple matches.
+# summary = "*example*"     Match msg with this summary. Can combine multiple matches.
+# body = *says*             Match msg with this body. Can combine multiple matches.
+# icon = *                  Match msg with this icon. Can combine multiple matches.
+# category = "any"          Match msg with this category. Can combine multiple matches.
+# msg_urgency = "any"	    Match msg with this msg_urgency. Can combine multiple matches.
+# timeout =		    Will override default.
+# urgency = 		    Will override default.
+# foregroung = "#ff0000"    Will override default.
+# background = "#ff0000"    Will override default.
+# new_icon = name           Will override default.
+# format = "new content"    Will override default. Change the msg. Set to "" to ignore.
+# history_ignore = yes      Will override default.
+# script =                  Will be called as: script appname summary body icon urgency
+
+# vim: ft=cfg
