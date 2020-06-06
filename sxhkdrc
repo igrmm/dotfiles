@@ -1,0 +1,131 @@
+#--- media key bindings ---#
+
+XF86AudioRaiseVolume
+	amixer sset Master 5%+ & ~/scripts/dwmbar.sh refresh
+
+shift + XF86AudioRaiseVolume
+	amixer sset Master 100% & ~/scripts/dwmbar.sh refresh
+
+XF86AudioLowerVolume
+	amixer sset Master 5%- & ~/scripts/dwmbar.sh refresh
+
+shift + XF86AudioLowerVolume
+	amixer sset Master 0% & ~/scripts/dwmbar.sh refresh
+
+#--- basic key bindings ---#
+
+super + Return
+	$TERMINAL
+
+super + Print
+	screenshot selection
+
+super + shift + Print
+	screenshot fullscreen
+
+super + Escape
+	~/scripts/power.sh
+
+super + shift + Escape
+	#TODO
+
+super + shift + Tab
+	#TODO
+
+super + BackSpace
+	#TODO
+
+super + shift + BackSpace
+	#TODO
+
+#--- letter key bindings ---#
+
+super + w
+	$BROWSER
+
+super + shift + w
+	#TODO
+
+super + e
+	$TERMINAL -e vifm
+
+super + shift + e
+	#TODO
+
+super + shift + r
+	#TODO
+
+super + shift + t
+	#TODO
+
+super + shift + y
+	#TODO
+
+super + shift + u
+	#TODO
+
+super + shift + o
+	#TODO
+
+super + p
+	#TODO
+
+super + shift + p
+	#TODO
+
+super + s
+	#TODO
+
+super + shift + s
+	#TODO
+
+super + d
+	dmenu_run -fn "monospace:size=12"
+
+super + shift + f
+	#TODO
+
+super + g
+	#TODO
+
+super + shift + g
+	#TODO
+
+super + ç
+	#TODO
+
+super + shift + ç
+	#TODO
+
+super + z
+	#TODO
+
+super + shift + z
+	#TODO
+
+super + x
+	#TODO
+
+super + shift + x
+	#TODO
+
+super + c
+	#TODO
+
+super + v
+	#TODO
+
+super + shift + v
+	#TODO
+
+super + shift + b
+	#TODO
+
+super + n
+	#TODO
+
+super + shift + n
+	#TODO
+
+super + shift + m
+	#TODO
