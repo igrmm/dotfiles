@@ -1,30 +1,31 @@
-"Vundle plugin manager
-set shell=/bin/zsh
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vifm/vifm.vim'
-Plugin 'dracula/vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf.vim'
-Plugin 'preservim/nerdtree'
-call vundle#end()
-filetype plugin indent on
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync
+endif
+
+call plug#begin('~/.config/nvim/plugged')
+Plug 'vifm/vifm.vim'
+Plug 'dracula/vim'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 "Basic configuration
+syntax on
+filetype plugin indent on
 set nu rnu
 set mouse=a
 set wildmode=longest,list,full
 set clipboard=unnamedplus
-vnoremap <C-c> "+y
-map <C-p> "+P
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--word-regexp', <bang>0)
 autocmd BufWritePre * %s/\s\+$//e
-syntax on
+au BufNewFile,BufRead *.txt set tw=80
+
+"Plugins
 colorscheme dracula
+set termguicolors
 let g:lightline = { 'colorscheme': 'dracula' }
 
-au BufNewFile,BufRead *.txt set tw=80
+"Maps
+vnoremap <C-c> "+y
+map <C-p> "+P
