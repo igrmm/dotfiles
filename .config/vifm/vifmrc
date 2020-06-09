@@ -4,7 +4,7 @@ set syscalls
 set nofollowlinks
 set sortnumbers
 set undolevels=100
-colorscheme ks1c.vifm
+colorscheme dracula_modified.vifm
 set timefmt=%m/%d\ %H:%M
 set wildmenu
 set wildstyle=popup
