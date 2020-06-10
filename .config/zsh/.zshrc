@@ -26,7 +26,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey "\e[3~" delete-char
 
 HISTSIZE=25000
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.cache/zsh/zsh_history"
 SAVEHIST=100000
 
 export REPORTTIME=10
