@@ -1,0 +1,4 @@
+[Default Applications]
+x-scheme-handler/tg=telegramdesktop.desktop
+application/zip=vifm.desktop
+application/vnd.rar=vifm.desktop
