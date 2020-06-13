@@ -1,6 +1,12 @@
 #!/bin/sh
 
+# export xdg user directories
 source ~/.config/user-dirs.dirs
+export XDG_DESKTOP_DIR
+export XDG_DOWNLOAD_DIR
+export XDG_CONFIG_HOME
+export XDG_DATA_HOME
+export XDG_CACHE_HOME
 
 export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin:~/scripts/bin
 export TERMINAL=st
