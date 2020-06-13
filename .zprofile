@@ -10,5 +10,6 @@ export ANDROID_HOME=$HOME/.android/Sdk
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/.gtkrc-2.0"
 export LESSHISTFILE="-"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export __GL_SHADER_DISK_CACHE="$HOME/.cache/nvidia"
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx $HOME/dotfiles/.xinitrc
