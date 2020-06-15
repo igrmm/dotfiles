@@ -8,7 +8,7 @@ export XDG_CONFIG_HOME
 export XDG_DATA_HOME
 export XDG_CACHE_HOME
 
-export PATH=$PATH:~/scripts/bin
+export PATH=~/scripts/wrappers:$PATH:~/scripts/bin
 export TERMINAL=st
 export BROWSER=firefox
 export EDITOR=nvim
