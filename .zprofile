@@ -23,6 +23,7 @@ export LESSHISTFILE="-"
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 #JAVA
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
