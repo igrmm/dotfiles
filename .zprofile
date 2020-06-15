@@ -15,6 +15,7 @@ export PATH=~/scripts/wrappers:$PATH:~/scripts/bin
 export TERMINAL=st
 export BROWSER=firefox
 export EDITOR=nvim
+export GDRIVE_PATH="$HOME"/files/GDRIVE
 
 #CONFIG FILES
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc-2.0
