@@ -22,6 +22,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc-2.0
 export LESSHISTFILE="-"
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 #JAVA
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
