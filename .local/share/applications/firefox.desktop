@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Firefox
+Exec=firefox %u
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
