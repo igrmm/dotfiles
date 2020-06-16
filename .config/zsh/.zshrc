@@ -39,6 +39,10 @@ alias vifm='~/scripts/bin/vifmub'
 alias h='cd $HOME'
 alias d='cd $HOME/dotfiles'
 alias s='cd $HOME/scripts'
+alias ssh='ssh \
+	-F $XDG_CONFIG_HOME/ssh/config \
+	-i $XDG_CONFIG_HOME/ssh/id_rsa \
+	-o UserKnownHostsFile=$XDG_CONFIG_HOME/ssh/known_hosts'
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
