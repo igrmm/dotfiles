@@ -31,7 +31,7 @@ command! reload :write | restart
 command! ft :echo filetype( '.' )
 
 " ------------------------------------------------------------------------------
-nnoremap <c-c> :!echo "file://$(pwd)/"%c | xclip -i -selection clipboard -t text/uri-list<cr>
+nnoremap <c-c> :!echo "file://$(pwd)/"%c | xclip -i -selection clipboard -t text/uri-list &<cr>
 nnoremap . za
 nnoremap <Space> <C-w>x<TAB>
 nnoremap s :!$SHELL<cr>
@@ -39,9 +39,9 @@ nnoremap S :sort<cr>
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 nnoremap gb :file &<cr>l
-nnoremap yd :!echo %d | xclip %i<cr>
-nnoremap yf :!echo %c:p | xclip %i<cr>
-nnoremap yF :!echo %c | xclip -rmlastnl %i<cr>
+nnoremap yd :!echo %d | xclip -rmlastnl %i &<cr>
+nnoremap yf :!echo %c:p | xclip -rmlastnl %i &<cr>
+nnoremap yF :!echo %c | xclip -rmlastnl %i &<cr>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
