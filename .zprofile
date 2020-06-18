@@ -28,8 +28,7 @@ export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 #JAVA
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME"
-export ANDROID_SDK_ROOT="$XDG_CONFIG_HOME"/android/sdk
-export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
+export ANDROID_SDK_ROOT="$XDG_DATA_HOME"/android/sdk
+export ANDROID_SDK_HOME="$XDG_DATA_HOME"/android
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx ~/dotfiles/.xinitrc
