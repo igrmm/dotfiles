@@ -7,5 +7,5 @@ picom &
 setlaptoptrackpad
 dunst -config ~/dotfiles/.config/dunst/dunstrc &
 birdtray &
-steam &
+steam -silent &
 exec dwm
