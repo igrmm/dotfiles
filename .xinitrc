@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # -- Starting up some programs
-xwallpaper --zoom ~/wall.png
+xwallpaper --zoom "$XDG_DATA_HOME"/wall.png
 setxkbmap -option altwin:swap_alt_win
 picom &
 setlaptoptrackpad
