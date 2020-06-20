@@ -105,7 +105,7 @@ filextype *.zip,*.jar,*.gz,*.tar FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATI
 filextype *.rar FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR
 
 " Pdf
-filextype *.pdf mupdf %f &
+filextype *.pdf xdg-open %f &
 fileviewer *.pdf ~/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
 
 " Libre Office
