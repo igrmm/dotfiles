@@ -8,4 +8,5 @@ setlaptoptrackpad
 dunst &
 birdtray &
 steam -silent &
+telegram-desktop -startintray &
 exec dwm
