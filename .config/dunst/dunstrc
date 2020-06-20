@@ -30,8 +30,8 @@
     max_icon_size = 64
     sticky_history = yes
     history_length = 20
-    dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
+    dmenu = dmenu -p dunst:
+    browser = firefox -new-tab
     always_run_script = true
     title = Dunst
     class = Dunst
@@ -42,10 +42,10 @@
     per_monitor_dpi = false
 
 [shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+slash
-    context = ctrl+shift+period
+    close = mod4+comma
+    close_all = mod4+shift+comma
+    history = mod4+period
+    context = mod4+slash
 
 [urgency_low]
     background = "#000000"
