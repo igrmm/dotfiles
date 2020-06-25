@@ -1,0 +1,8 @@
+#------DWMBAR------#
+
+# fetch time and date
+@reboot ~/projects/dwmbar/dwmbar TIMEDATE --fetch
+* * * * * ~/projects/dwmbar/dwmbar TIMEDATE --fetch
+
+# cron jobs backup list
+@daily crontab -l > ~/dotfiles/cron-backup
