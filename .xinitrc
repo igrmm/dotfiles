@@ -9,4 +9,4 @@ dunst &
 birdtray &
 steam -silent &
 telegram-desktop -startintray &
-exec dwm
+~/projects/dwmbar/dwmbar & exec dwm
