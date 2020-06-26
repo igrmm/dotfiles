@@ -13,7 +13,7 @@ telegram-desktop -startintray &
 #start dwmbar
 [ -d /tmp/dwmbar.lock ] && rm -rf /tmp/dwmbar.lock
 [ -f /tmp/dwmbarlog ] && rm -rf /tmp/dwmbarlog
-exec ~/projects/dwmbar/dwmbar FETCHALL &
-exec ~/projects/dwmbar/dwmbar &
+exec dwmbar FETCHALL &
+exec dwmbar &
 
 exec dwm

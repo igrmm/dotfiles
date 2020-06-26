@@ -14,7 +14,7 @@ zstyle ':completion:*' max-errors 1 numeric
 zstyle ':completion:*' substitute 0
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-zstyle :compinstall filename "$HOME/.zshrc"
+zstyle :compinstall filename "$DOTFILES/zsh/.zshrc"
 
 # Restore emacs bindkeys if EDITOR=vim
 bindkey -e
@@ -36,8 +36,8 @@ alias ll='ls -lh --color=auto'
 alias la='ls -lah --color=auto'
 alias vim='nvim'
 alias h='cd $HOME'
-alias d='cd $HOME/dotfiles'
-alias s='cd $HOME/scripts'
+alias d='cd $DOTFILES'
+alias s='cd $SCRIPTS'
 alias ssh='ssh \
 	-F $XDG_CONFIG_HOME/ssh/config \
 	-i $XDG_CONFIG_HOME/ssh/id_rsa \
