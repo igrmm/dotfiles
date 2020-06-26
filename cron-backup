@@ -1,19 +1,13 @@
 #------DWMBAR------#
 
 # fetch time and date
-@reboot ~/projects/dwmbar/dwmbar TIMEDATE --fetch
 * * * * * ~/projects/dwmbar/dwmbar TIMEDATE --fetch
 
 # fetch free space on root disk
-@reboot ~/projects/dwmbar/dwmbar DFROOT --fetch
 * * * * * ~/projects/dwmbar/dwmbar DFROOT --fetch
 
 # fetch free space on files disk
-@reboot ~/projects/dwmbar/dwmbar DFFILES --fetch
 * * * * * ~/projects/dwmbar/dwmbar DFFILES --fetch
-
-# fetch volume
-@reboot ~/projects/dwmbar/dwmbar VOLUME --fetch
 
 # cron jobs backup list
 @daily crontab -l > ~/dotfiles/cron-backup
