@@ -12,5 +12,8 @@
 @reboot ~/projects/dwmbar/dwmbar DFFILES --fetch
 * * * * * ~/projects/dwmbar/dwmbar DFFILES --fetch
 
+# fetch volume
+@reboot ~/projects/dwmbar/dwmbar VOLUME --fetch
+
 # cron jobs backup list
 @daily crontab -l > ~/dotfiles/cron-backup
