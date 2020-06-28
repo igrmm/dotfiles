@@ -90,11 +90,11 @@ fileview */ lsd %c --icon=always --icon-theme=unicode --group-dirs=first
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.gif
         \ {View in sxiv}
         \ rifle_sxiv %f &
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif ~/scripts/vifmimg.sh draw %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif ~/repositories/scripts/vifmimg.sh draw %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
 
 " Videos
 filextype *.MOV,*.mpg,*.flv,*.wmv,*.mp4,*.avi,*.mkv mpv %f 2>/dev/null &
-fileviewer *.MOV,*.mpg,*.flv,*.wmv,*.mp4,*.avi,*.mkv ~/scripts/vifmimg.sh videopreview %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
+fileviewer *.MOV,*.mpg,*.flv,*.wmv,*.mp4,*.avi,*.mkv ~/repositories/scripts/vifmimg.sh videopreview %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
 
 " Audio
 filextype *.mp3,*.ogg mpv %f 2>/dev/null
@@ -106,7 +106,7 @@ filextype *.rar FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR
 
 " Pdf
 filextype *.pdf xdg-open %f &
-fileviewer *.pdf ~/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/scripts/vifmimg.sh clear
+fileviewer *.pdf ~/repositories/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
 
 " Libre Office
 filextype *.odt,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
