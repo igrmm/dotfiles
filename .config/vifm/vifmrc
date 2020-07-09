@@ -62,9 +62,9 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " ------------------------------------------------------------------------------
 mark h ~/
-mark d ~/dotfiles
-mark s ~/scripts
-mark b ~/scripts/bin
+mark d ~/repositories/dotfiles
+mark s ~/repositories/scripts
+mark b ~/repositories/scripts/bin
 
 " ------------------------------------------------------------------------------
 " Icons
