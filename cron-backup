@@ -9,5 +9,8 @@
 # fetch free space on files disk
 * * * * * ~/repositories/dwmbar/dwmbar DFFILES --fetch
 
+# fetch upgradables packages
+*/2 * * * * ~/repositories/dwmbar/dwmbar PACKAGES --fetch
+
 # cron jobs backup list
 @daily crontab -l > ~/repositories/dotfiles/cron-backup
