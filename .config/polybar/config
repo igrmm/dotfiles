@@ -44,6 +44,7 @@ label-empty-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
+label = %title:0:130:...%
 
 [module/date]
 type = custom/script
