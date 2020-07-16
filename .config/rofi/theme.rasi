@@ -1,0 +1,40 @@
+* {
+	background-color:	#21222c;
+	text-color:             #f8f8f2;
+	font:                   "monospace 10";
+}
+
+#window {
+	location:               north;
+	width:                  100%;
+	children:     	        [ horibox ];
+}
+
+#horibox {
+	orientation:            horizontal;
+	children:               [ prompt, entry, listview ];
+}
+
+#listview {
+	layout:                 horizontal;
+	spacing:                10;
+	lines:                  100;
+}
+
+#entry {
+	blink:                  false;
+	expand:                 false;
+	width:                  10em;
+	border:                 1;
+}
+
+#element {
+	padding:                1 5;
+}
+
+#element selected {
+	text-color:             #21222c;
+	background-color:       #bd93f9;
+}
+
+/* vim:ft=css
