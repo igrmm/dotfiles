@@ -9,7 +9,7 @@ export XDG_DATA_HOME
 export XDG_CACHE_HOME
 
 #PREFERENCES
-export TERMINAL=st
+export TERMINAL=alacritty
 export BROWSER=firefox
 export EDITOR=nvim
 export GDRIVE_PATH="$HOME"/files/GDRIVE
