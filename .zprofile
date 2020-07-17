@@ -15,6 +15,7 @@ export EDITOR=nvim
 export GDRIVE_PATH="$HOME"/files/GDRIVE
 export DOTFILES="$HOME"/repositories/dotfiles
 export SCRIPTS="$HOME"/repositories/scripts
+export BSPWMSCRIPTS="$SCRIPTS"/bspwm
 
 #PATH
 export PATH=$SCRIPTS/wrappers:$PATH:$SCRIPTS/bin
