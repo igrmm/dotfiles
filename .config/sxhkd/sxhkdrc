@@ -38,7 +38,7 @@ super + Escape
 	powermenu
 
 super + Return
-	$TERMINAL
+	"$TERMINAL"
 
 super + space
 	rofi -show run
@@ -56,10 +56,10 @@ super + w
 	firefox
 
 super + e
-	$TERMINAL -e vifm
+	"$TERMINAL" -e vifm
 
 super + r
 	pkill -USR1 -x sxhkd
 
 super + t
-	telegram-desktop floating
+	"$BSPWMSCRIPTS"/launchtelegram.sh
