@@ -63,3 +63,6 @@ super + r
 
 super + t
 	"$BSPWMSCRIPTS"/launchtelegram.sh
+
+super + m
+	birdtray -t
