@@ -30,7 +30,7 @@
     max_icon_size = 64
     sticky_history = yes
     history_length = 20
-    dmenu = dmenu -p dunst:
+    dmenu = rofi -dmenu
     browser = firefox -new-tab
     always_run_script = true
     title = Dunst
