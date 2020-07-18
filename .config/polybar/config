@@ -6,6 +6,7 @@ light = #f8f8f2
 alert = #bd2c40
 
 [bar/bar]
+separator = " "
 line-size = 1
 height = 18
 background = ${colors.dark}
@@ -15,7 +16,7 @@ module-margin-right = 1
 font-0 = "monospace:size=12;2"
 font-1 = "FontAwesome:size=12;2"
 modules-left = bspwm xwindow
-modules-right = date
+modules-right = date time
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
@@ -46,11 +47,17 @@ label-empty-padding = 1
 type = internal/xwindow
 label = %title:0:130:...%
 
-[module/date]
+[module/time]
 type = custom/script
 interval = 5
 exec = date '+%H:%M'
 format-prefix = " "
+
+[module/date]
+type = custom/script
+interval = 86400
+exec = date '+%Y-%m-%d'
+format-prefix = " "
 
 [settings]
 screenchange-reload = true
