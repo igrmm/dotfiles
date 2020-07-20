@@ -56,7 +56,8 @@ format-prefix = " "
 [module/date]
 type = custom/script
 interval = 86400
-exec = date '+%Y-%m-%d'
+exec = "$SCRIPTS"/bar/date.sh
+click-left = "$SCRIPTS"/bar/date.sh click-left
 format-prefix = " "
 
 [settings]
