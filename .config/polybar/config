@@ -16,7 +16,7 @@ module-margin-right = 1
 font-0 = "monospace:size=12;2"
 font-1 = "FontAwesome:size=12;2"
 modules-left = bspwm xwindow
-modules-right = alsa dffiles dfroot date time
+modules-right = pacman alsa dffiles dfroot date time
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
@@ -81,6 +81,13 @@ format-prefix = " "
 type = internal/alsa
 label-volume =  %percentage%%
 label-muted =  0%
+
+[module/pacman]
+type = custom/script
+interval = 900
+exec = checkupdates | wc -l
+format-prefix = " "
+click-middle = checkupdates | wc -l
 
 [settings]
 screenchange-reload = true
