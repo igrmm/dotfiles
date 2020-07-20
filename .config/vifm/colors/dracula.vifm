@@ -39,7 +39,7 @@ highlight ErrorMsg        cterm=none ctermfg=red ctermbg=black
 highlight Directory       cterm=none ctermfg=blue ctermbg=default
 highlight Link            cterm=none ctermfg=cyan ctermbg=default
 highlight BrokenLink      cterm=none ctermfg=red ctermbg=default
-highlight Socket          cterm=none ctermfg=magenta ctermbg=black
+highlight Socket          cterm=none ctermfg=magenta ctermbg=default
 highlight Device          cterm=none ctermfg=red ctermbg=default
-highlight Fifo            cterm=none ctermfg=yellow ctermbg=black
+highlight Fifo            cterm=none ctermfg=yellow ctermbg=default
 highlight Executable      cterm=none ctermfg=green ctermbg=default
