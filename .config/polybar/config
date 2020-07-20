@@ -28,6 +28,8 @@ scroll-down = bspwm-deskprev
 
 [module/bspwm]
 type = internal/bspwm
+format = <label-state> <label-mode>
+label-floating = [F]
 label-focused = %index%
 label-focused-background = ${colors.purple}
 label-focused-foreground = ${colors.dark}
