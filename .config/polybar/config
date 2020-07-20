@@ -16,7 +16,7 @@ module-margin-right = 1
 font-0 = "monospace:size=12;2"
 font-1 = "FontAwesome:size=12;2"
 modules-left = bspwm xwindow
-modules-right = date time
+modules-right = dfroot date time
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
@@ -59,6 +59,13 @@ interval = 86400
 exec = "$SCRIPTS"/bar/date.sh
 click-left = "$SCRIPTS"/bar/date.sh click-left
 format-prefix = " "
+
+[module/dfroot]
+type = custom/script
+interval = 60
+exec = "$SCRIPTS"/bar/dfroot.sh
+click-left = "$SCRIPTS"/bar/dfroot.sh click-left
+format-prefix = " "
 
 [settings]
 screenchange-reload = true
