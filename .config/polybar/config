@@ -86,14 +86,14 @@ label-muted =  0%
 type = custom/script
 exec = "$SCRIPTS"/bar/pacman.sh
 tail = true
-click-middle = "kill -USR1 $(pgrep --oldest --parent %pid%)"
+click-middle = "kill -USR1 $(pgrep -x pacman.sh)"
 format-prefix = " "
 
 [module/rss]
 type = custom/script
 exec = "$SCRIPTS"/bar/rss.sh
 tail = true
-click-middle = "kill -USR1 $(pgrep --oldest --parent %pid%)"
+click-middle = "kill -USR1 $(pgrep -x rss.sh)"
 click-left = "$TERMINAL" -e newsboat
 format-prefix = " "
 
