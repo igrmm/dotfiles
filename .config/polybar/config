@@ -16,7 +16,7 @@ module-margin-right = 1
 font-0 = "monospace:size=12;2"
 font-1 = "FontAwesome:size=12;2"
 modules-left = bspwm xwindow
-modules-right = pacman alsa dffiles dfroot date time
+modules-right = rss pacman alsa dffiles dfroot date time
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
@@ -84,10 +84,18 @@ label-muted =  0%
 
 [module/pacman]
 type = custom/script
-interval = 900
-exec = checkupdates | wc -l
+exec = "$SCRIPTS"/bar/pacman.sh
+tail = true
+click-middle = kill -USR1 %pid%
 format-prefix = " "
-click-middle = checkupdates | wc -l
+
+[module/rss]
+type = custom/script
+exec = "$SCRIPTS"/bar/rss.sh
+tail = true
+click-middle = kill -USR1 %pid%
+click-left = "$TERMINAL" -e newsboat
+format-prefix = " "
 
 [settings]
 screenchange-reload = true
