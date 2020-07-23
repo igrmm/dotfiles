@@ -67,6 +67,7 @@ type = custom/script
 interval = 60
 exec = "$SCRIPTS"/bar/dfroot.sh
 click-left = "$SCRIPTS"/bar/dfroot.sh click-left
+click-midle = "$SCRIPTS"/bar/dfroot.sh
 format-prefix = " "
 
 [module/dffiles]
