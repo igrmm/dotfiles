@@ -45,7 +45,7 @@ nnoremap yF :!echo %c | xclip -rmlastnl %i &<cr>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
-nnoremap ,t :!xterm &<cr>
+nnoremap ,t :!$TERMINAL &<cr>
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
 nnoremap ,w :set wrap!<cr>
 nnoremap <f1> :!setwallpaper %f &<cr>
