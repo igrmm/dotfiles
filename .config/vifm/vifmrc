@@ -31,6 +31,7 @@ command! reload :write | restart
 command! ft :echo filetype( '.' )
 
 " ------------------------------------------------------------------------------
+nnoremap o :vs!<cr>
 nnoremap <c-c> :!echo "file://$(pwd)/"%c | xclip -i -selection clipboard -t text/uri-list &<cr>
 nnoremap . za
 nnoremap <Space> <C-w>x<TAB>
