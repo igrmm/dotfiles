@@ -35,4 +35,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export ANDROID_SDK_ROOT="$XDG_DATA_HOME"/android/sdk
 export ANDROID_SDK_HOME="$XDG_DATA_HOME"/android
 
+#FIX QT HIDPI BUG
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
 [ "$(tty)" = "/dev/tty1" ] && exec startx "$DOTFILES"/.xinitrc
