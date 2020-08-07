@@ -82,7 +82,7 @@ set classify+='  ::*.pdf::'
 set classify+='  ::*.zip,,*.rar,,*.7z,,*.7zip::'
 set classify+='  ::*.cxi,,*.3ds,,*.cia,,*.smc::'
 set classify+='  ::*.doc,,*.docx,,*.odt::'
-set classify+='  ::*.xlx,,*.xlsx::'
+set classify+='  ::*.ods,,*.xlx,,*.xlsx::'
 
 " ------------------------------------------------------------------------------
 fileview */ lsd %c --icon=always --icon-theme=unicode --group-dirs=first
@@ -110,4 +110,4 @@ filextype *.pdf xdg-open %f &
 fileviewer *.pdf ~/repositories/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
 
 " Libre Office
-filextype *.odt,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
+filextype *.odt,*.ods,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
