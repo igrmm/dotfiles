@@ -69,3 +69,6 @@ super + m
 
 super + n
 	joplin
+
+super + c
+	"$TERMINAL" -e R --quiet
