@@ -9,6 +9,8 @@ birdtray &
 steam -silent &
 telegram-desktop -startintray &
 sxhkd &
+keepassxc &
+joplin &
 xsetroot -cursor_name left_ptr &
 polybar -r bar &
 
