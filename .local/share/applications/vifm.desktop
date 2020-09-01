@@ -6,6 +6,6 @@
 [Desktop Entry]
 Name=Vifm
 #Exec=vifm %u
-Exec=st -e vifm %u
+Exec=alacritty -e vifm %u
 #Terminal=true
 Type=Application
