@@ -95,7 +95,7 @@ type = custom/script
 exec = "$SCRIPTS"/bar/rss.sh
 tail = true
 click-middle = "kill -USR1 $(pgrep --oldest --parent %pid%)"
-click-left = "$TERMINAL" -e newsboat
+click-left = "$TERMINAL" -e newsboat &
 format-prefix = " "
 
 [module/repositories]
