@@ -16,7 +16,7 @@ module-margin-right = 1
 font-0 = "monospace:size=12;2"
 font-1 = "FontAwesome:size=12;2"
 modules-left = bspwm xwindow
-modules-right = repositories rss pacman alsa dffiles dfroot date time
+modules-right = gdrive repositories rss pacman alsa dffiles dfroot date time
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
@@ -105,6 +105,13 @@ tail = true
 click-middle = "kill -USR1 $(pgrep --oldest --parent %pid%)"
 click-left = "$SCRIPTS"/bar/repositories.sh click-left
 format-prefix = " "
+
+[module/gdrive]
+type = custom/script
+exec = "$SCRIPTS"/bar/gdrive.sh
+tail = true
+click-middle = "kill -USR1 $(pgrep --oldest --parent %pid%)"
+format-prefix = " "
 
 [settings]
 screenchange-reload = true
