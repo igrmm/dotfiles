@@ -3,3 +3,6 @@ x-scheme-handler/tg=telegramdesktop.desktop
 application/zip=vifm.desktop
 application/vnd.rar=vifm.desktop
 application/pdf=pdf.desktop;
+inode/directory=vifm.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
