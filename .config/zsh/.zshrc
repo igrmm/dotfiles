@@ -38,6 +38,7 @@ alias vim='nvim'
 alias h='cd $HOME'
 alias d='cd $DOTFILES'
 alias s='cd $SCRIPTS'
+alias du='du -h'
 alias ssh='ssh \
 	-F $XDG_CONFIG_HOME/ssh/config \
 	-i $XDG_CONFIG_HOME/ssh/id_rsa \
