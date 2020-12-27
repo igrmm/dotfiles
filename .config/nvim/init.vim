@@ -9,6 +9,7 @@ Plug 'vifm/vifm.vim'
 Plug 'dracula/vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "Basic configuration
