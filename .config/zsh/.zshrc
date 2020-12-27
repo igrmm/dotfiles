@@ -31,6 +31,7 @@ SAVEHIST=100000
 
 export REPORTTIME=10
 
+alias R='R --silent'
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lah --color=auto'
