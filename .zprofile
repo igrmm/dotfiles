@@ -16,6 +16,8 @@ export GDRIVE_PATH="$HOME"/files/GDRIVE
 export DOTFILES="$HOME"/repositories/dotfiles
 export SCRIPTS="$HOME"/repositories/scripts
 export BSPWMSCRIPTS="$SCRIPTS"/bspwm
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #PATH
 export PATH=$SCRIPTS/wrappers:$PATH:$SCRIPTS/bin
