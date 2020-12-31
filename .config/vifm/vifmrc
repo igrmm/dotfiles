@@ -33,7 +33,7 @@ command! ft :echo filetype( '.' )
 " ------------------------------------------------------------------------------
 nnoremap o :vs!<cr>
 nnoremap <c-c> :!$SCRIPTS/vifm/clipboard.sh -i %c &<cr>
-nnoremap <c-v> :!$SCRIPTS/vifm/clipboard.sh -o &<cr>
+nnoremap <c-v> :!$SCRIPTS/vifm/clipboard.sh -o <cr>
 nnoremap . za
 nnoremap <Space> <C-w>x<TAB>
 nnoremap s :!$SHELL<cr>
