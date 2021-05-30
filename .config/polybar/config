@@ -25,6 +25,7 @@ wm-restack = bspwm
 enable-ipc = true
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+fixed-center = false
 
 [module/bspwm]
 type = internal/bspwm
