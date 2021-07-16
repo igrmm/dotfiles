@@ -112,3 +112,6 @@ fileviewer *.pdf ~/repositories/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c
 
 " Libre Office
 filextype *.odt,*.ods,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
+
+" Aseprite
+filextype *.aseprite aseprite %f 2>/dev/null &
