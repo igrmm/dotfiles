@@ -56,7 +56,7 @@ super + w
 	firefox
 
 super + e
-	"$TERMINAL" -e vifm
+	"$TERMINAL" --class vifm,vifm -e vifm
 
 super + r
 	pkill -USR1 -x sxhkd
