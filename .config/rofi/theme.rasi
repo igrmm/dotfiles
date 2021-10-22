@@ -38,4 +38,9 @@
 	background-color:       #bd93f9;
 }
 
+element-text {
+	text-color:             inherit;
+	background-color:       inherit;
+}
+
 /* vim:ft=css
