@@ -39,5 +39,6 @@ export ANDROID_SDK_HOME="$XDG_DATA_HOME"/android
 
 #FIX QT HIDPI BUG
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_QPA_PLATFORMTHEME=gtk2
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx "$DOTFILES"/.xinitrc
