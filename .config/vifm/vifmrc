@@ -31,6 +31,7 @@ command! reload :write | restart
 command! ft :echo filetype( '.' )
 
 " ------------------------------------------------------------------------------
+nnoremap q ZQ
 nnoremap o :vs!<cr>
 nnoremap <c-c> :!$SCRIPTS/vifm/clipboard.sh -i %c &<cr>
 nnoremap <c-v> :!$SCRIPTS/vifm/clipboard.sh -o <cr>
