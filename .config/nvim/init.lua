@@ -2,19 +2,18 @@
 vim.call("plug#begin", "~/.config/nvim/plugged")
 vim.call("plug#", "dracula/vim")
 vim.call("plug#", "itchyny/lightline.vim")
-vim.call("plug#", "junegunn/fzf.vim")
 vim.call("plug#", "lukas-reineke/indent-blankline.nvim")
 vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["do"] = vim.fn[":TSUpdate"] })
 vim.call("plug#", "j-hui/fidget.nvim")
 vim.call("plug#", "vifm/vifm.vim")
+vim.call("plug#", "nvim-telescope/telescope-fzf-native.nvim", { ["do"] = vim.fn[":make"] })
+vim.call("plug#", "nvim-lua/plenary.nvim")
+vim.call("plug#", "nvim-telescope/telescope.nvim")
 vim.call("plug#", "neovim/nvim-lspconfig")
+vim.call("plug#", "saadparwaiz1/cmp_luasnip")
+vim.call("plug#", "L3MON4D3/LuaSnip")
 vim.call("plug#", "hrsh7th/cmp-nvim-lsp")
-vim.call("plug#", "hrsh7th/cmp-buffer")
-vim.call("plug#", "hrsh7th/cmp-path")
-vim.call("plug#", "hrsh7th/cmp-cmdline")
 vim.call("plug#", "hrsh7th/nvim-cmp")
-vim.call("plug#", "hrsh7th/cmp-vsnip")
-vim.call("plug#", "hrsh7th/vim-vsnip")
 vim.call("plug#end")
 
 -- config plugins
@@ -40,12 +39,16 @@ vim.o.breakindent = true
 
 -- maps
 vim.g.mapleader = " "
-vim.keymap.set("n", "<C-_>", ":bd<CR>")
+vim.keymap.set("n", "<C-b>", ":bd<CR>")
 vim.keymap.set("v", "<C-c>", "\"+y")
 vim.keymap.set("n", "<C-p>", "\"+P")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<leader>e", ":Vifm<CR>")
-vim.keymap.set("n", "<leader><leader>", ":Files<CR>")
-vim.keymap.set("n", "<leader>b", ":Buffers<CR>")
+vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader>t", ":Telescope<CR>")
 
 -- tree-sitter plugin (https://github.com/nvim-treesitter/nvim-treesitter)
 require "nvim-treesitter.configs".setup {
@@ -57,10 +60,10 @@ require "nvim-treesitter.configs".setup {
 
 -- nvim-lspconfig plugin (https://github.com/neovim/nvim-lspconfig)
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>d", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<CR>", opts)
 
 local on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -69,16 +72,17 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wl", function()
+    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set("n", "<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set("n", "<leader>s", ":Telescope lsp_dynamic_workspace_symbols<CR>")
 end
 
 -- nvim-cmp plugin (https://github.com/hrsh7th/nvim-cmp/)
@@ -87,7 +91,7 @@ local cmp = require "cmp"
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     window = {
@@ -101,7 +105,7 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "vsnip" },
+        { name = "luasnip" },
     }, {
         { name = "buffer" },
     })
