@@ -72,3 +72,12 @@ super + n
 
 super + c
 	"$TERMINAL" --class calculator,calculator -e R --quiet
+
+super + comma
+	dunstctl history-pop
+
+super + a
+	dunstctl action
+
+super + period
+	dunstctl close-all

@@ -41,12 +41,6 @@
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = mod4+comma
-    close_all = mod4+shift+comma
-    history = mod4+period
-    context = mod4+slash
-
 [urgency_low]
     background = "#000000"
     foreground = "#ffffff"
