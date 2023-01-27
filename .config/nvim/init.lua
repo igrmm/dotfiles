@@ -1,5 +1,6 @@
 -- call plugins
 vim.call("plug#begin", "~/.config/nvim/plugged")
+vim.call("plug#", "lewis6991/gitsigns.nvim")
 vim.call("plug#", "dracula/vim")
 vim.call("plug#", "itchyny/lightline.vim")
 vim.call("plug#", "lukas-reineke/indent-blankline.nvim")
@@ -142,3 +143,14 @@ require "lspconfig".sumneko_lua.setup {
 
 -- fidget plugin
 require "fidget".setup {}
+
+-- gitsigns plugin
+require('gitsigns').setup {
+    signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+    },
+}
