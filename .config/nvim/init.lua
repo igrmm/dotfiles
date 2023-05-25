@@ -28,6 +28,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
+-- commands
+vim.api.nvim_create_user_command("XY", "s/\\.x/\\.y/g | s/>x/>y/g", {})
+vim.api.nvim_create_user_command("YX", "s/\\.y/\\.x/g | s/>y/>x/g", {})
+
 -- basic config
 vim.o.number = true
 vim.o.relativenumber = true
