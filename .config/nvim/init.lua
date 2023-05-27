@@ -89,6 +89,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, bufopts)
     vim.keymap.set("n", "<leader>s", ":Telescope lsp_document_symbols<CR>")
+    client.server_capabilities.semanticTokensProvider = nil
 end
 
 -- nvim-cmp plugin (https://github.com/hrsh7th/nvim-cmp/)
