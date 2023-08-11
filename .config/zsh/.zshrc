@@ -44,6 +44,7 @@ alias ssh='ssh \
 	-F $XDG_CONFIG_HOME/ssh/config \
 	-i $XDG_CONFIG_HOME/ssh/id_rsa \
 	-o UserKnownHostsFile=$XDG_CONFIG_HOME/ssh/known_hosts'
+alias android_get_files='adb pull /sdcard/DCIM/transfer/ ~/'
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
