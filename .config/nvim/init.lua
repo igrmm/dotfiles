@@ -2,6 +2,7 @@
 vim.call("plug#begin", "~/.config/nvim/plugged")
 vim.call("plug#", "lewis6991/gitsigns.nvim")
 vim.call("plug#", "dracula/vim")
+vim.call("plug#", "shortcuts/no-neck-pain.nvim")
 vim.call("plug#", "itchyny/lightline.vim")
 vim.call("plug#", "lukas-reineke/indent-blankline.nvim")
 vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["do"] = vim.fn[":TSUpdate"] })
@@ -55,6 +56,7 @@ vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>t", ":Telescope<CR>")
+vim.keymap.set("n", "<leader>n", ":NoNeckPain<CR>")
 
 -- tree-sitter plugin (https://github.com/nvim-treesitter/nvim-treesitter)
 require "nvim-treesitter.configs".setup {
