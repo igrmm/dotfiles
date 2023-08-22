@@ -6,6 +6,7 @@ vim.call("plug#", "shortcuts/no-neck-pain.nvim")
 vim.call("plug#", "itchyny/lightline.vim")
 vim.call("plug#", "lukas-reineke/indent-blankline.nvim")
 vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["do"] = vim.fn[":TSUpdate"] })
+vim.call("plug#", "nvim-treesitter/nvim-treesitter-textobjects")
 vim.call("plug#", "j-hui/fidget.nvim")
 vim.call("plug#", "vifm/vifm.vim")
 vim.call("plug#", "nvim-telescope/telescope-fzf-native.nvim", { ["do"] = vim.fn[":make"] })
@@ -64,6 +65,49 @@ require "nvim-treesitter.configs".setup {
     auto_install = true,
     highlight = { enable = true },
     additional_vim_regex_highlighting = false,
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ['aa'] = '@parameter.outer',
+                ['ia'] = '@parameter.inner',
+                ['af'] = '@function.outer',
+                ['if'] = '@function.inner',
+                ['ac'] = '@class.outer',
+                ['ic'] = '@class.inner',
+            },
+        },
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+                [']m'] = '@function.outer',
+                [']]'] = '@class.outer',
+            },
+            goto_next_end = {
+                [']M'] = '@function.outer',
+                [']['] = '@class.outer',
+            },
+            goto_previous_start = {
+                ['[m'] = '@function.outer',
+                ['[['] = '@class.outer',
+            },
+            goto_previous_end = {
+                ['[M'] = '@function.outer',
+                ['[]'] = '@class.outer',
+            },
+        },
+        swap = {
+            enable = true,
+            swap_next = {
+                ['<leader>a'] = '@parameter.inner',
+            },
+            swap_previous = {
+                ['<leader>A'] = '@parameter.inner',
+            },
+        },
+    },
 }
 
 -- nvim-lspconfig plugin (https://github.com/neovim/nvim-lspconfig)
