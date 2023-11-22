@@ -71,7 +71,7 @@ super + n
 	joplin
 
 super + c
-	"$TERMINAL" --class calculator,calculator -e R --quiet
+	"$TERMINAL" --class calculator,calculator -e python -i /dev/null
 
 super + comma
 	dunstctl history-pop
