@@ -84,6 +84,7 @@ require "nvim-treesitter.configs".setup {
             goto_next_start = {
                 [']m'] = '@function.outer',
                 [']]'] = '@class.outer',
+                [']p'] = '@parameter.outer',
             },
             goto_next_end = {
                 [']M'] = '@function.outer',
