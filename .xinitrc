@@ -14,5 +14,6 @@ joplin &
 xsetroot -cursor_name left_ptr &
 polybar -r bar &
 flameshot &
+ferdium &
 
 exec bspwm
