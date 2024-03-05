@@ -61,7 +61,7 @@ vim.keymap.set("n", "<leader>n", ":NoNeckPain<CR>")
 
 -- tree-sitter plugin (https://github.com/nvim-treesitter/nvim-treesitter)
 require "nvim-treesitter.configs".setup {
-    ensure_installed = { "c", "cpp", "lua", "rust", "go" },
+    ensure_installed = { "c", "cpp", "lua", "rust", "go", "python" },
     auto_install = true,
     highlight = { enable = true },
     additional_vim_regex_highlighting = false,
@@ -168,6 +168,16 @@ local capabilities = require "cmp_nvim_lsp".default_capabilities()
 
 -- call lsp servers
 require "lspconfig".clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require "lspconfig".pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require "lspconfig".ruff_lsp.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
