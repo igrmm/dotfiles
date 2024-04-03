@@ -118,7 +118,11 @@ filextype *.pdf xdg-open %f &
 fileviewer *.pdf ~/repositories/scripts/vifmimg.sh pdfpreview %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
 
 " Libre Office
-filextype *.odt,*.ods,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
+" filextype *.odt,*.ods,*.doc,*.docx,*.xlx,*.xlsx,*.xls libreoffice %f 2>/dev/null &
+filextype *.odt,*.ods,*.doc,*.docx libreoffice %f 2>/dev/null &
+
+" Excell
+filextype *.xlx,*.xlsx,*.xls gnumeric %f 2>/dev/null &
 
 " Aseprite
 filextype *.aseprite aseprite %f 2>/dev/null &
