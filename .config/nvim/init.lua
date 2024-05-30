@@ -24,6 +24,9 @@ vim.o.termguicolors = true
 vim.cmd "colorscheme dracula"
 vim.g["lightline"] = { colorscheme = "dracula" }
 
+-- sets bg color in hover window because dracula theme doesnt fully support nvim
+vim.cmd "highlight! link NormalFloat DraculaBgDark"
+
 -- remove trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
