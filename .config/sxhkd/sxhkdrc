@@ -81,3 +81,6 @@ super + a
 
 super + period
 	dunstctl close-all
+
+super + z
+	"$BSPWMSCRIPTS"/launchferdium.sh
