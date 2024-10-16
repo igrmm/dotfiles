@@ -3,6 +3,9 @@
 super + q
 	bspc node -c
 
+button10
+	bspc node -c
+
 super + {_,shift +}{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
