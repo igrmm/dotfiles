@@ -12,7 +12,7 @@ export XDG_CACHE_HOME
 export TERMINAL=alacritty
 export BROWSER=firefox
 export EDITOR=nvim
-export GDRIVE_PATH="$HOME"/files/GDRIVE
+export GDRIVE_PATH="$HOME"/gdrive
 export DOTFILES="$HOME"/repositories/dotfiles
 export SCRIPTS="$HOME"/repositories/scripts
 export BSPWMSCRIPTS="$SCRIPTS"/bspwm
