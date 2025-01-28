@@ -33,7 +33,7 @@ export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 #JAVA
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export _JAVA_AWT_WM_NONREPARENTING=1
-export ANDROID_SDK_ROOT="$XDG_DATA_HOME"/android/sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
 export ANDROID_SDK_HOME="$XDG_DATA_HOME"/android
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export ANDROID_NDK_HOME="$ANDROID_SDK_ROOT"/ndk
