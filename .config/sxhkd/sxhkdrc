@@ -59,7 +59,7 @@ super + w
 	firefox
 
 super + e
-	"$TERMINAL" start --class vifm vifm
+	"$TERMINAL" start --class yazi yazi
 
 super + r
 	pkill -USR1 -x sxhkd
