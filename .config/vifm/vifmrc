@@ -96,7 +96,7 @@ set classify+='  ::*.ods,,*.xlx,,*.xlsx::'
 fileview */ lsd %c --icon=always --icon-theme=unicode --group-dirs=first
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.gif
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.gif,*.webp
         \ {View in sxiv}
         \ rifle_sxiv %f &
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif ~/repositories/scripts/vifmimg.sh draw %px %py %pw %ph %c %pc ~/repositories/scripts/vifmimg.sh clear
