@@ -59,7 +59,7 @@ super + w
 	firefox
 
 super + e
-	"$TERMINAL" --class vifm,vifm -e vifm
+	"$TERMINAL" start --class vifm vifm
 
 super + r
 	pkill -USR1 -x sxhkd
@@ -74,7 +74,7 @@ super + n
 	joplin
 
 super + c
-	"$TERMINAL" --class calculator,calculator -e python -i /dev/null
+	"$TERMINAL" start --class calculator python -i /dev/null
 
 super + comma
 	dunstctl history-pop
