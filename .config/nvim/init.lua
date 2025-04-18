@@ -175,7 +175,7 @@ require "lspconfig".pyright.setup {
     capabilities = capabilities
 }
 
-require "lspconfig".ruff_lsp.setup {
+require "lspconfig".ruff.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
