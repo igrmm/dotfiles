@@ -17,7 +17,7 @@ picom &
 dunst &
 birdtray &
 steam -silent &
-telegram-desktop -startintray &
+Telegram -startintray &
 sxhkd &
 keepassxc &
 joplin &
