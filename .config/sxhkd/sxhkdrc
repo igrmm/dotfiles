@@ -87,3 +87,6 @@ super + period
 
 super + z
 	"$BSPWMSCRIPTS"/launchferdium.sh
+
+super + o
+    ocr.sh
