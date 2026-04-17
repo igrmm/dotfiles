@@ -84,28 +84,6 @@ require "nvim-treesitter.configs".setup {
         },
     },
 }
-local to_select = require "nvim-treesitter.textobjects.select"
-local to_move = require "nvim-treesitter.textobjects.move"
-local function goto_next_param_sel(mode)
-    if mode == "v" then
-        esc_key = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
-        vim.api.nvim_feedkeys(esc_key, "x", false)
-    end
-    to_move.goto_next_start("@parameter.inner")
-    to_select.select_textobject("@parameter.inner")
-end
-local function goto_prev_param_sel(mode)
-    if mode == "v" then
-        esc_key = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
-        vim.api.nvim_feedkeys(esc_key, "x", false)
-    end
-    to_move.goto_previous_end("@parameter.inner")
-    to_select.select_textobject("@parameter.inner")
-end
-vim.keymap.set("n", "<Tab>", function() goto_next_param_sel("n") end)
-vim.keymap.set("v", "<Tab>", function() goto_next_param_sel("v") end)
-vim.keymap.set("n", "<S-Tab>", function() goto_prev_param_sel("n") end)
-vim.keymap.set("v", "<S-Tab>", function() goto_prev_param_sel("v") end)
 vim.keymap.set("n", "]f", ":TSTextobjectGotoNextStart@function.outer<CR>zz")
 vim.keymap.set("n", "[f", ":TSTextobjectGotoPreviousStart@function.outer<CR>zz")
 
