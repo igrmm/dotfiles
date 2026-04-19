@@ -1,25 +1,36 @@
--- call plugins
 vim.call("plug#begin", "~/.config/nvim/plugged")
+
+-- simple plugins
 vim.call("plug#", "lewis6991/gitsigns.nvim")
 vim.call("plug#", "dracula/vim")
 vim.call("plug#", "shortcuts/no-neck-pain.nvim")
 vim.call("plug#", "itchyny/lightline.vim")
-vim.call("plug#", "lukas-reineke/indent-blankline.nvim")
-vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["do"] = vim.fn[":TSUpdate"] })
-vim.call("plug#", "nvim-treesitter/nvim-treesitter-textobjects")
 vim.call("plug#", "j-hui/fidget.nvim")
-vim.call("plug#", "vifm/vifm.vim")
+
+-- plugin used to jump between functions
+vim.call("plug#", "nvim-treesitter/nvim-treesitter-textobjects", { ["branch"] = "main" })
+
+-- telescope plugin
 vim.call("plug#", "nvim-telescope/telescope-fzf-native.nvim", { ["do"] = vim.fn[":make"] })
 vim.call("plug#", "nvim-lua/plenary.nvim")
 vim.call("plug#", "nvim-telescope/telescope.nvim")
-vim.call("plug#", "neovim/nvim-lspconfig")
+
+-- plugins for completion engine
 vim.call("plug#", "saadparwaiz1/cmp_luasnip")
 vim.call("plug#", "L3MON4D3/LuaSnip")
 vim.call("plug#", "hrsh7th/cmp-nvim-lsp")
 vim.call("plug#", "hrsh7th/nvim-cmp")
+
+-- this plugin makes some basic lsp config automatically (clangd, lua_ls etc)
+vim.call("plug#", "neovim/nvim-lspconfig")
+
+-- use this plugin to download parsers for syntax highlight
+-- TSInstall c or TSInstall cpp etc
+-- vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["branch"] = "main" })
+
 vim.call("plug#end")
 
--- config plugins
+-- config colorscheme plugin
 vim.o.termguicolors = true
 vim.cmd "colorscheme dracula"
 vim.g["lightline"] = { colorscheme = "dracula" }
@@ -32,10 +43,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
 })
-
--- commands
-vim.api.nvim_create_user_command("XY", "s/\\.x/\\.y/g | s/>x/>y/g", {})
-vim.api.nvim_create_user_command("YX", "s/\\.y/\\.x/g | s/>y/>x/g", {})
 
 -- basic config
 vim.o.number = true
@@ -55,73 +62,78 @@ vim.keymap.set("v", "<C-c>", "\"+y")
 vim.keymap.set("n", "<C-p>", "\"+P")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<leader>e", ":Vifm<CR>")
 vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>t", ":Telescope<CR>")
 vim.keymap.set("n", "<leader>n", ":NoNeckPain<CR>")
 
--- tree-sitter plugin (https://github.com/nvim-treesitter/nvim-treesitter)
-require "nvim-treesitter.configs".setup {
-    ensure_installed = { "c", "cpp", "lua", "rust", "go", "python" },
-    auto_install = true,
-    highlight = { enable = true },
-    additional_vim_regex_highlighting = false,
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ['ip'] = '@parameter.inner',
-                ['of'] = '@function.outer',
-                ['if'] = '@function.inner',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true,
+-- highlight (uses bultin treesitter + parsers by nvim-treesitter
+-- check highlight with :Inspect on a symbol
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "python", "lua" },
+    callback = function() vim.treesitter.start() end,
+})
+
+-- tree-sitter-textobjects plugin (https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+vim.keymap.set({ "n", "x", "o" }, "]f", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+    local keys = vim.api.nvim_replace_termcodes("zz", true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", false)
+end)
+vim.keymap.set({ "n", "x", "o" }, "[f", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+    local keys = vim.api.nvim_replace_termcodes("zz", true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", false)
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+    require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end)
+vim.keymap.set("n", "<Tab>", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.inner")
+end)
+vim.keymap.set("n", "<S-Tab>", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@parameter.inner")
+end)
+
+-- config and call LSP servers
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        local opts = { noremap = true, silent = true, buf = ev.buf }
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
+        vim.keymap.set("n", "<leader>s", ":Telescope lsp_document_symbols<CR>")
+        vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float)
+        vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<CR>")
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = { globals = { "vim" } },
         },
     },
-}
-vim.keymap.set("n", "]f", ":TSTextobjectGotoNextStart@function.outer<CR>zz")
-vim.keymap.set("n", "[f", ":TSTextobjectGotoPreviousStart@function.outer<CR>zz")
+})
 
--- nvim-lspconfig plugin (https://github.com/neovim/nvim-lspconfig)
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<CR>", opts)
-
-local on_attach = function(client, bufnr)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set("n", "<leader>wl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, bufopts)
-    vim.keymap.set("n", "<leader>s", ":Telescope lsp_document_symbols<CR>")
-    client.server_capabilities.semanticTokensProvider = nil
-end
+vim.lsp.enable({ "clangd", "pyright", "lua_ls" })
 
 -- nvim-cmp plugin (https://github.com/hrsh7th/nvim-cmp/)
 vim.o.completeopt = "menu,menuone,noselect"
-local cmp = require "cmp"
+local cmp = require("cmp")
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     window = {
@@ -140,34 +152,19 @@ cmp.setup({
         { name = "buffer" },
     })
 })
-local capabilities = require "cmp_nvim_lsp".default_capabilities()
 
--- call lsp servers
-require "lspconfig".clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
+-- fidget plugin (https://github.com/j-hui/fidget.nvim)
+require("fidget").setup {}
 
-require "lspconfig".pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
-require "lspconfig".ruff.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
--- fidget plugin
-require "fidget".setup {}
-
--- gitsigns plugin
-require('gitsigns').setup {
+-- gitsigns plugin (github.com/lewis6991/gitsigns.nvim)
+require("gitsigns").setup {
     signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
     },
+    vim.keymap.set("n", "]g", function() require("gitsigns").nav_hunk("next") end),
+    vim.keymap.set("n", "[g", function() require("gitsigns").nav_hunk("prev") end)
 }
