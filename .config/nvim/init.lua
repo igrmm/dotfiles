@@ -15,11 +15,8 @@ vim.call("plug#", "nvim-telescope/telescope-fzf-native.nvim", { ["do"] = vim.fn[
 vim.call("plug#", "nvim-lua/plenary.nvim")
 vim.call("plug#", "nvim-telescope/telescope.nvim")
 
--- plugins for completion engine
-vim.call("plug#", "saadparwaiz1/cmp_luasnip")
-vim.call("plug#", "L3MON4D3/LuaSnip")
-vim.call("plug#", "hrsh7th/cmp-nvim-lsp")
-vim.call("plug#", "hrsh7th/nvim-cmp")
+-- plugin for completion engine
+vim.call("plug#", "saghen/blink.cmp", { ["tag"] = "v1.*" })
 
 -- this plugin makes some basic lsp config automatically (clangd, lua_ls etc)
 vim.call("plug#", "neovim/nvim-lspconfig")
@@ -127,30 +124,11 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.enable({ "clangd", "pyright", "lua_ls" })
 
--- nvim-cmp plugin (https://github.com/hrsh7th/nvim-cmp/)
-vim.o.completeopt = "menu,menuone,noselect"
-local cmp = require("cmp")
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
-    },
-    window = {
-    },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-    }, {
-        { name = "buffer" },
-    })
+-- blink.cmp plugin (https://github.com/saghen/blink.cmp)
+require("blink.cmp").setup({
+    keymap = {
+        ["<CR>"] = { "select_and_accept", "fallback" },
+    }
 })
 
 -- fidget plugin (https://github.com/j-hui/fidget.nvim)
