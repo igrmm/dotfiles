@@ -1,31 +1,39 @@
-vim.call("plug#begin", "~/.config/nvim/plugged")
+vim.pack.add({
+    -- simple plugins
+    "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/dracula/vim",
+    "https://github.com/shortcuts/no-neck-pain.nvim",
+    "https://github.com/itchyny/lightline.vim",
+    "https://github.com/j-hui/fidget.nvim",
 
--- simple plugins
-vim.call("plug#", "lewis6991/gitsigns.nvim")
-vim.call("plug#", "dracula/vim")
-vim.call("plug#", "shortcuts/no-neck-pain.nvim")
-vim.call("plug#", "itchyny/lightline.vim")
-vim.call("plug#", "j-hui/fidget.nvim")
+    -- plugin used to jump between functions
+    {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+        version = "main"
+    },
 
--- plugin used to jump between functions
-vim.call("plug#", "nvim-treesitter/nvim-treesitter-textobjects", { ["branch"] = "main" })
+    -- telescope plugin
+    "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/nvim-telescope/telescope.nvim",
 
--- telescope plugin
-vim.call("plug#", "nvim-telescope/telescope-fzf-native.nvim", { ["do"] = vim.fn[":make"] })
-vim.call("plug#", "nvim-lua/plenary.nvim")
-vim.call("plug#", "nvim-telescope/telescope.nvim")
 
--- plugin for completion engine
-vim.call("plug#", "saghen/blink.cmp", { ["tag"] = "v1.*" })
+    -- this plugin makes some basic lsp config automatically (clangd, lua_ls etc)
+    "https://github.com/neovim/nvim-lspconfig",
 
--- this plugin makes some basic lsp config automatically (clangd, lua_ls etc)
-vim.call("plug#", "neovim/nvim-lspconfig")
+    -- plugin for completion engine
+    {
+        src = "https://github.com/saghen/blink.cmp",
+        version = vim.version.range("v1.*")
+    },
 
--- use this plugin to download parsers for syntax highlight
--- TSInstall c or TSInstall cpp etc
--- vim.call("plug#", "nvim-treesitter/nvim-treesitter", { ["branch"] = "main" })
-
-vim.call("plug#end")
+    -- use this plugin to download parsers for syntax highlight
+    -- TSInstall c or TSInstall cpp etc
+    {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter",
+        version = "main"
+    },
+})
 
 -- config colorscheme plugin
 vim.o.termguicolors = true
